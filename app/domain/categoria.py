@@ -1,14 +1,14 @@
-from extensions import Base
-from sqlalchemy.orm import relationship, Mapped, mapped_column
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sistema_ropa.app.extensions import Base
+from sqlalchemy.orm import relationship, Mapped
+from sqlalchemy import Column, Integer, String
 
-class Category(Base):
-    __tablename__ = "categories"
+class Categoria(Base):
+    __tablename__ = "categorias"
 
     id = Column(Integer, primary_key=True, index=True)
     nombre = Column(String(100), nullable=False)
 
-    products: Mapped[list["Product"]] = relationship("Product", back_populates="categoria")
+    productos: Mapped[list["Producto"]] = relationship("Producto", back_populates="categoria")
 
     def __repr__(self):
         return f"Categoria {self.id!r} {self.nombre!r}"

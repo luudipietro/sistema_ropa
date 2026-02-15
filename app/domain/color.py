@@ -1,9 +1,9 @@
-from extensions import Base
-from sqlalchemy import Column, Integer, String, Float, ForeignKey
-from sqlalchemy.orm import relationship, Mapped, mapped_column
+from sistema_ropa.app.extensions import Base
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import relationship, Mapped
 
 class Color(Base):
-    __tablename__ = "colors"
+    __tablename__ = "colores"
 
     id = Column(Integer, primary_key=True, index=True)
     nombre = Column(String, unique=True, index=True)

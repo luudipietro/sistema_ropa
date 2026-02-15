@@ -1,9 +1,9 @@
-from extensions import Base
+from sistema_ropa.app.extensions import Base
 from sqlalchemy import Column, Integer, String
-from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy.orm import Mapped, relationship
 
-class Size(Base):
-    __tablename__ = "sizes"
+class Talle(Base):
+    __tablename__ = "talles"
 
     id = Column(Integer, primary_key=True, index=True)
     nombre = Column(String, unique=True, index=True)

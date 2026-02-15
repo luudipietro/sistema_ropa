@@ -1,15 +1,17 @@
 from sistema_ropa.app.extensions import Base
-from sqlalchemy.orm import relationship, Mapped
-from sqlalchemy import Column, Integer, String, Float
+from sqlalchemy.orm import relationship, Mapped, mapped_column
+from sqlalchemy import Column, Integer, Float, ForeignKey
 
-class Purchase(Base):
-    __tablename__ = "purchases"
+class Compra(Base):
+    __tablename__ = "compras"
 
     id = Column(Integer, primary_key=True, index=True)
     total = Column(Float, nullable=False)
-    metodo_pago = Column(String, nullable=False)
 
-    product: Mapped["Product"] = relationship("Product", back_populates="purchases")
+    id_metodo_pago: Mapped[int] = mapped_column(Integer, ForeignKey("metodos_pago.id"))
+    metodo_pago: Mapped["MetodoPago"] = relationship("MetodoPago", back_populates="compras")
+
+    detalles: Mapped[list["DetalleCompra"]] = relationship("DetalleCompra", back_populates="compra")
 
     def __repr__(self):
-        return f"Purchase {self.id!r} Product ID: {self.product_id!r} Quantity: {self.quantity!r} Total Price: {self.total_price!r}"
+        return f"Compra {self.id!r} Total: {self.total!r}"
