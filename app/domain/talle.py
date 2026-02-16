@@ -1,4 +1,4 @@
-from sistema_ropa.app.extensions import Base
+from app.db.extensions import Base
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import Mapped, relationship
 

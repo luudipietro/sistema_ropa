@@ -1,6 +1,9 @@
-from sistema_ropa.app.extensions import Base
-        return f"DetalleCompra {self.id!r} Compra: {self.id_compra!r} Stock: {self.id_stock!r} Cant: {self.cantidad!r} CostoU: {self.costo_unitario!r}"
-    def __repr__(self):
+from app.db.extensions import Base
+from sqlalchemy.orm import relationship, Mapped, mapped_column
+from sqlalchemy import Column, Integer, Float, ForeignKey
+
+class DetalleCompra(Base):
+    __tablename__ = "detalles_compra"
 
     stock: Mapped["Stock"] = relationship("Stock", back_populates="detalles_compra")
     id_stock: Mapped[int] = mapped_column(Integer, ForeignKey("stocks.id"), nullable=False)
@@ -12,8 +15,5 @@ from sistema_ropa.app.extensions import Base
     cantidad = Column(Integer, nullable=False)
     id = Column(Integer, primary_key=True, index=True)
 
-    __tablename__ = "detalles_compra"
-class DetalleCompra(Base):
-
-from sqlalchemy.orm import relationship, Mapped, mapped_column
-from sqlalchemy import Column, Integer, Float, ForeignKey
+    def __repr__(self):
+        return f"DetalleCompra {self.id!r} Compra: {self.id_compra!r} Stock: {self.id_stock!r} Cant: {self.cantidad!r} CostoU: {self.costo_unitario!r}"
