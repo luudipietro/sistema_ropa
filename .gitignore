@@ -1,0 +1,30 @@
+# Bases de datos y entorno
+dev.db
+*.sqlite
+.env
+
+# Entornos virtuales
+.venv/
+venv/
+ENV/
+env/
+
+# Archivos de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Paquetes y builds
+*.egg-info/
+build/
+dist/
+
+# IDE / editor
+.idea/
+.vscode/
+
+# Logs y sistema
+*.log
+.DS_Store
